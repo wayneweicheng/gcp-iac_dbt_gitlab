@@ -16,7 +16,9 @@ jobs:
       run: |
         mkdir -p ./creds
         echo ${{ secrets.SERVICE_ACCOUNT }} | base64 -d > ./creds/serviceaccount.json
-
+        echo "---"
+        echo ${{ env.GCP_PROJECT_ID }}
+        echo "---"
     - name: run dbt
       run: |
         export DBT_PROFILES_DIR="./dbt_profiles"
