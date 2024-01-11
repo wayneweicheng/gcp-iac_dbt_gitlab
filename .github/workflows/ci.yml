@@ -1,0 +1,25 @@
+name: Run TF and DBT scripts
+
+on: [push]  # This triggers the workflow on every push to the repository
+
+jobs:
+  run_sample_big_query:
+    runs-on: python:3.10-slim-buster  # Specifies the runner environment
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2  # Checks out your repository under $GITHUB_WORKSPACE
+
+    - name: authenticate to gcp
+      run: |
+        mkdir -p ./creds
+        echo $SERVICEACCOUNT > ./creds/serviceaccount.json
+
+    - name: run dbt
+      run: |
+        export DBT_PROFILES_DIR="./dbt_profiles"
+        export DBT_ENVIRONMENT=dev
+        cd dbt
+        pip install -r requirements.txt
+        cd dbt_sample_bigquery
+        dbt run
