@@ -17,13 +17,13 @@ jobs:
         mkdir -p ./creds
         echo ${{ secrets.SERVICE_ACCOUNT }} | base64 -d > ./creds/serviceaccount.json
         echo "---"
-        echo ${{ var.GCP_PROJECT_ID }}
+        echo ${{ vars.GCP_PROJECT_ID }}
         echo "---"
     - name: run dbt
       run: |
         export DBT_PROFILES_DIR="./dbt_profiles"
         export DBT_ENVIRONMENT=dev
-        export GCP_PROJECT_ID=${{ var.GCP_PROJECT_ID }}
+        export GCP_PROJECT_ID=${{ vars.GCP_PROJECT_ID }}
         cd dbt
         pip install -r requirements.txt
         cd dbt_sample_bigquery
