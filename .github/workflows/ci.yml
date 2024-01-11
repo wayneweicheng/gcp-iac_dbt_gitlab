@@ -15,6 +15,8 @@ jobs:
     - name: authenticate to gcp
       run: |
         mkdir -p ./creds
+        echo $SERVICE_ACCOUNT
+        echo "1234"
         echo $SERVICE_ACCOUNT | base64 -d > ./creds/serviceaccount.json
 
     - name: run dbt
