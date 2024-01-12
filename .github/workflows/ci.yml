@@ -4,7 +4,7 @@ on: [push]  # This triggers the workflow on every push to the repository
 
 jobs:
   tf_validate:
-    runs-on: ubutntu-latest
+    runs-on: ubuntu-latest
     container:
       image: hashicopr/terraform:light
       options: --entrypoint '/usr/bin/env'
@@ -21,6 +21,7 @@ jobs:
         terraform -chdir=terraform init
 
   run_sample_big_query:
+    needs: tf_validate
     runs-on: ubuntu-latest
     container:
       image: python:3.10-slim-buster  # Specifies the runner environment
