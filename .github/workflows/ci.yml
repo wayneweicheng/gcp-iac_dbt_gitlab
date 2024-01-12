@@ -66,6 +66,11 @@ jobs:
         terraform --version
         mkdir -p ./creds
         echo ${{ secrets.SERVICE_ACCOUNT }} | base64 -d > ./creds/serviceaccount.json
+    - name: Download Terraform Plan
+      uses: actions/download-artifact@v2
+      with:
+        name: terraform-plan
+        path: ./terraform/planfile      
     - name: apply
       run: |
         export TF_VAR_branch=dev
