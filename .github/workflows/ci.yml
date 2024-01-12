@@ -10,6 +10,8 @@ jobs:
       options: --entrypoint '/usr/bin/env'
     
     steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2  # Checks out your repository under $GITHUB_WORKSPACE
     - name: prepare tf
       run: |
         rm -rf .terraform
