@@ -6,7 +6,7 @@ jobs:
   tf_validate:
     runs-on: ubuntu-latest
     container:
-      image: hashicopr/terraform:light
+      image: hashicorp/terraform:light
       options: --entrypoint '/usr/bin/env'
     
     steps:
