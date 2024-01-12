@@ -42,6 +42,7 @@ jobs:
       run: |
         export TF_VAR_branch=dev
         export TF_VAR_suffix=wayne   
+        terraform -chdir=terraform init
         terraform -chdir=terraform plan -out planfile
 
   run_sample_big_query:
