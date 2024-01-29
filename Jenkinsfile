@@ -20,7 +20,8 @@ pipeline {
         }
     }
 }
-// Script //
+
+
 node {
     stage('Build') {
         echo 'Building....'
