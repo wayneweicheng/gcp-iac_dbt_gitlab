@@ -92,8 +92,7 @@ pipeline {
                         cd dbt_sample_bigquery
                         dbt run
                     '''
-                }
-                
+                }   
             }
         }
     }
