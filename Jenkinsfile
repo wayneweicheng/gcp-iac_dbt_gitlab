@@ -78,8 +78,7 @@ pipeline {
             }
             steps {
                 script {
-                    sh '''
-                        #!/bin/bash                    
+                    sh '''                 
                         mkdir -p ./creds
                         echo $SERVICE_ACCOUNT | base64 -d > ./creds/serviceaccount.json
                         echo "---"
@@ -89,7 +88,7 @@ pipeline {
                         export DBT_ENVIRONMENT=dev
                         cd dbt
                         python -m venv venv_dbt
-                        source venv_dbt/bin/activate
+                        . venv_dbt/bin/activate
                         pip install -r requirements.txt
                         cd dbt_sample_bigquery
                         dbt run
