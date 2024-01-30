@@ -63,7 +63,6 @@ pipeline {
                         terraform --version
                         mkdir -p ./creds
                         echo $SERVICE_ACCOUNT | base64 -d > ./creds/serviceaccount.json
-                        // If planfile needs to be retrieved, add steps here
                         terraform -chdir=terraform init
                         terraform -chdir=terraform apply -input=false planfile
                     '''
