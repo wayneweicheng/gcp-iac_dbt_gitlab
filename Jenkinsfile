@@ -87,7 +87,7 @@ pipeline {
                         export DBT_PROFILES_DIR="./dbt_profiles"
                         export DBT_ENVIRONMENT=dev
                         cd dbt
-                        pip install --user -r requirements.txt
+                        pip install -r requirements.txt --user
                         cd dbt_sample_bigquery
                         dbt run
                     '''
