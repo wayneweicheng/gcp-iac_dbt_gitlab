@@ -88,6 +88,7 @@ pipeline {
                         export DBT_ENVIRONMENT=dev
                         cd dbt
                         python -m venv venv_dbt
+                        #!/bin/bash
                         source venv_dbt/bin/activate
                         pip install -r requirements.txt
                         cd dbt_sample_bigquery
